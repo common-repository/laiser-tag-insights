@@ -1,0 +1,631 @@
+@charset "utf-8";
+/* LAISERTAG INSIGHTS */
+
+
+/* note that .insights-pg is the page's parent div. if we need to make changes exclusive to this pg, add here. for changes to the main laiser tag page, that's another class. found in the css file there */
+.insights-pg {}
+
+/* typography */
+.insights-pg h1 {
+  font-size: 1.5em;
+}
+.insights-pg strong {
+  font-weight: 700;
+}
+
+/* altering the focus state for this page on a-tags*/
+.insights-pg a:focus {
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+}
+
+/* in leiu of mixins */
+.add-border {
+  box-shadow: 0 1px 1px rgba(0,0,0,.04);
+  border: 1px solid #ddd;
+}
+.insights-blue-border {
+  border: 1px solid #176888;
+}
+
+/* making sure the labels don't give the illusion of being actionable */
+label {
+	cursor: default;
+}
+
+.lt-thick-blue-line {
+	background: #176888;
+  padding: 2px;
+	margin: 15px 0;
+}
+
+/* header containing the logo, description */
+.insights-pg #header {
+  padding: 25px 25px 25px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.insights-pg #header .logo-title {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 9px; /* with default padding from wp, makes it look aligned with text below in mobile */
+}
+
+.insights-pg #header h2,
+.insights-pg #header p {
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 767px) {
+  .insights-pg #header {
+    flex-direction: row;
+  }
+}
+
+.insights-pg #logo {
+	max-width: 120px;
+  margin-right: 25px;
+}
+
+/* the tabs: Also in parent plugin, should always match */
+.insights-pg .nav-tab-parent {
+  max-width: 100%;
+  margin: 0 2em 2em 1em;
+}
+.insights-pg .nav-tab-wrapper {
+  border-bottom: 0;
+}
+
+.insights-pg .nav-tab {
+  font-weight: 700;
+  background: #fff;
+  color: #176888;
+  border-radius: 5px 5px 0 0;
+  border: 2px solid #176888;
+  border-bottom: 0;
+  opacity: 0.8;
+}
+.insights-pg .nav-tab:hover,
+.insights-pg .nav-tab:focus {
+    opacity: 1;
+}
+/* active state for the tab selected */
+.insights-pg .nav-tab.active {
+  background: #176888;
+  color: #fff;
+  opacity: 1;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+}
+
+
+/* for the 'settings' tab, where we split the columns */
+.flex-parent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* forces the sidebar beneath the info circles on all up to tablet */
+}
+
+/* and for desktop, 1px above ipad size*/
+@media all and (min-width: 769px) {
+  .flex-parent {
+    flex-wrap: nowrap;
+  }
+}
+
+
+/* box sitting to the left, on settings tab */
+.insights-leftbox {
+  background: #fff;
+  order: 1;
+  padding: 11px 15px 15px 15px; /* hte 11px offsets the padding on the td */
+	flex: 1 1 auto; /* makes sure it fills the space */
+}
+/* for browsers that cannot read flex*/
+@supports not(display:flex) {
+  .insights-leftbox {
+    width: 63%;
+    float: left;
+  }
+}
+
+.insights-leftbox h3 {
+  font-weight: 400;
+}
+
+/* on the Settings tab, the welcome box */
+.insights-pg .lt-first-visit-box {
+  background: #bcdae8;
+  padding: 25px;
+  font-weight: 600;
+	margin-bottom: 25px;
+	color: #000;
+	border-left: 10px solid #000;
+}
+
+/* and when it's back to the default */
+.lt-welcome-box {
+	font-weight: 600;
+	padding-left: 15px;
+	margin-bottom: 25px;
+}
+
+/* box sitting to the right */
+.insights-pg .insights-rightbox {
+  border-top: 1px solid #ddd;
+  flex: 1 1 100%;
+  background: #fff;
+  padding: 15px;
+  order: 2;
+  margin: 1em 0;
+}
+/* for browsers that cannot read flex*/
+@supports not(display:flex) {
+  .insights-rightbox {
+    float: right;
+    min-width: 255px;
+  }
+}
+/* and for tablet and up */
+@media all and (min-width: 769px) {
+  .insights-rightbox {
+    max-width: 20%;
+    float: none;
+		border-left: 1px solid #ddd;
+		border-top: 0;
+  }
+}
+
+
+
+/* the end container */
+.insights-extras {
+  text-align: center;
+}
+@media all and (min-width: 767px) {
+  .insights-extras {
+    align-self: flex-end;
+    text-align: left;
+  }
+}
+
+/* the 'button' for email support */
+.insights-email-support {
+  min-width: 150px;
+}
+
+.insights-email-support a {
+  background: #176888;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+}
+.insights-email-support a:hover,
+.insights-email-support a:focus {
+  background: #9dcb3c;
+  border-radius: 5px;
+}
+
+/* for the update box */
+.insights-update {
+  border-radius: 5px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.4);
+  width: 200px;
+
+}
+.insights-update span {
+  color: green;
+  font-weight: 700;
+}
+
+/* titles used on all panels */
+.insights-pg .insights-subtitles {
+  background: #176888;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 25px;
+}
+.insights-pg .insights-subtitles h1 {
+  color: #fff;
+}
+
+
+.insights-pg select.lti-ltbb-select {
+  background: #fff;
+  color: #000;
+  margin-left: 15px;
+}
+/* positioning the datepicker */
+.metrics-datepicker {
+  justify-self: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+.insights-pg .insights-inner-padding {
+  padding: 15px;
+}
+
+/* for the first section on metrics tab */
+
+/* the ul */
+.tags-by-clicks li {
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  background: aliceblue;
+  display: flex;
+}
+.tags-by-clicks li div {
+  display: inline-block;
+}
+.insight-tagborder {
+  border-left: 0;
+  padding: 3px 5px;
+}
+.insight-tagnumber {
+  background: #176888;
+  color: #fff;
+  padding: 4px 6px;
+}
+.lti-ltbb-lists ul {
+  padding: 10px 25px 25px;
+  margin: 0;
+}
+#lti-ltbb-tagsbyviews h3,
+#lti-ltbb-tagsbyclicks h3,
+#lti-ltbb-tagsbyclicks p,
+#lti-ltbb-tagsbyviews p {
+  margin-bottom: 0;
+}
+#lti-ltbb-tagsbyviews p,
+#lti-ltbb-tagsbyclicks p {
+  margin-top: 0;
+  font-weight: 700;
+}
+#lti-ltbb-tagsbyviews p,
+#lti-ltbb-tagsbyviews h3,
+#lti-ltbb-tagsbyclicks p,
+#lti-ltbb-tagsbyclicks h3 {
+  padding-left: 25px;
+}
+#lti-ltbb-tagsbyclicks {
+  float: right;
+}
+
+.lti-section-header{
+	padding: 15px 0px;
+  display:block;
+  clear: both;
+}
+
+.lti-ltbb-graph {
+  width: 49%;
+  min-height: 300px;
+  font-size: 14px;
+  line-height: 1.2em;
+  float: left;
+  /* for those that understand flex, making it prettier*/
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 25px; /* spacing for the title afterwards */
+}
+
+/* used on all subtitles in Insights' pages */
+.insights-title-border {
+  background: #176888;
+  margin-bottom: 25px;
+  padding-left: 25px;
+}
+.insights-title-border h3 {
+    color: #fff;
+}
+
+
+
+
+#ltdaterangefields{
+	max-width: 300px;
+}
+
+.lti-ltbb-container {
+            box-sizing: border-box;
+            height: 100%;
+            padding: 20px 15px 15px 15px;
+            margin: 15px auto 30px auto;
+            border: 1px solid #ddd;
+            background: #fff;
+
+
+        }
+
+        .lti-ltbb-holder {
+            min-height: 450px;
+
+        }
+
+
+
+
+
+select.lti-ltbb-select {
+	color: #fff;
+	float: left;
+	border: 1px solid #666;
+	border-radius: 3px;
+	background-color: #464646;
+
+}
+select.lti-ltbb-select:hover,
+select.lti-ltbb-select:focus {
+	background-color: #efefef;
+	color: #666;
+}
+.lti-ltbb-update{
+	float: right;
+}
+
+.lti-ltbb-update button {
+	color: #fff;
+	background-color:#5BAB08;
+	font-size: 18px;
+	font-weight: 400;
+	border: 1px solid #999;
+	border-radius: 3px;
+	clear: both;
+}
+
+
+
+.lti-errormsg{
+	padding: 15px;
+	background-color: #FCFCC4;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+}
+
+/* migrated styles from the original, as it used milligram.css */
+.insights-pg .row {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+}
+@media (min-width: 40rem) {
+  .insights-pg .row {
+    flex-direction: row;
+  }
+  .insights-pg .row .column {
+     padding: 0 0.5rem;
+  }
+}
+.insights-pg .row .column {
+  display: block;
+  flex: 1 1 auto;
+  max-width: 100%;
+  width: 100%;
+}
+/* the div the little circled number sits in */
+.insights-pg .row .column.column-10 {
+  flex: 1;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* results box parent */
+.lti-results-box-parent {
+	display: flex;
+	flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* each box that contains the article. */
+.lti-results-box {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	display: inline-block;
+	width: auto;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 767px) {
+	.lti-results-box {
+		width: 45%;
+	}
+}
+
+/* title beside the number */
+.lti-results-box h4 {
+  margin: 0.3em 0 1em 0;
+  line-height: 1.2;
+}
+.lti-results-box h4 a {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* the circular number top left */
+.lti-results-number {
+	background: #176888;
+	border-radius: 50%;
+	color: #fff;
+	font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+}
+
+/* the row for the grey boxes. */
+.insights-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* the 'Words In' section just below main title */
+.lti-words-in-box {
+  display: inline-block;
+	background: #f5f6f6;
+	padding: 10px 0;
+  margin-bottom: 10px;
+	font-weight: 700;
+  text-align: center;
+  width: 49%;
+}
+
+/* giving the titles some space up top */
+.lti-spacer-top {
+	margin-top: 1rem;
+}
+
+/* the parent for boxes surrounding Tags and Search Terms so they're readable */
+.lti-mini-boxes {
+	list-style-type: none;
+	display: inline-block; /* backup */
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* the wee boxes themselves */
+.lti-mini-boxes li {
+	margin: 2px;
+	border: 1px solid #ccc;
+	font-size: 13px;
+	padding: 3px;
+}
+
+/* --------- settings pg --------------- */
+.insights-button {
+  display: block;
+  padding: 14px 0;
+  color: #fff;
+  background: #176888;
+  box-shadow: 0 1px 1px rgba(0,0,0,.4);
+  border-radius: 5px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 16px;
+}
+.insights-button:hover,
+.insights-button:focus {
+  background: #9dcb3c;
+  color: #fff;
+}
+.insights-pg .button-small {
+	width: 200px;
+	margin: 0 auto;
+}
+
+.insights-leftbox h3 {
+  line-height: 1.2;
+}
+.insights-rightbox p:first-of-type {
+  margin-top: 0;
+}
+.insights-rightbox hr {
+  margin: 24px 0;
+}
+
+
+/* ------- the state shapes --------*/
+/* for sites that can't see the flex below */
+@supports not(display:flex) {
+  .lti-status-shape {
+    text-align: center;
+    padding-top: 15px;
+  }
+}
+.lti-status-shape {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+  font-weight: 700;
+  box-shadow: 0 1px 5px rgba(0,0,0,.4);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+
+
+/* ---------- box used on each state ---------- */
+.lti-status-box {
+  text-align: center;
+  padding: 7px 14px;
+}
+
+/* giving the middle column a border */
+.lti-google-connection-status {
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+/* sketch. just for now */
+.flex-parent h4 {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+/* making the columns of equal size */
+.lti-site-status,
+.lti-site-permission-status,
+.lti-google-connection-status {
+  width: 33%;
+}
+/* ---------- for the google site permission status ---------- */
+.lti-site-permission-status {
+
+}
+
+/* ---------- for the google analytics connection status ---------- */
+.lti-google-connection-status {
+
+}
+
+/* ---------- positive state ---------- */
+.lti-connection-yes,
+.lti-permission-yes,
+.lti-status-active {
+  background: #4e8e1b;
+  color: #fff;
+}
+
+/* ---------- the 'no' states ---------- */
+.lti-permission-no,
+.lti-status-inactive,
+.lti-connection-no {
+  background: #eeb51a;
+  color: #fff;
+}
+
+.lti-status-new,
+.lti-status-processing {
+  background: #5e4896;
+  color: #fff;
+}
+
+/* ---------- associated email with account ---------- */
+.lti-assoc-email {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  font-weight: 700;
+  text-align: center;
+}
